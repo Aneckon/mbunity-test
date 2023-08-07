@@ -1,4 +1,9 @@
+'use client';
 import React from 'react';
+import { toast } from 'react-toastify';
+
+import { useForm, SubmitHandler } from 'react-hook-form';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,7 +13,16 @@ import styles from './footer.module.scss';
 
 import Logo from '@/assets/logo-footer.svg';
 
+type Inputs = {
+  email: string;
+};
+
 export const Footer = () => {
+  const { register, handleSubmit } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    toast.success('Success form send');
+  };
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -116,8 +130,8 @@ export const Footer = () => {
           </div>
           <div className={styles.footer__newsletter}>
             <h4>Join Our Newsletter</h4>
-            <form className={styles.footer__form}>
-              <input type="text" placeholder="Your email address" />
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.footer__form}>
+              <input {...register('email')} type="text" placeholder="Your email address" />
               <Button className={'primary'} type={'submit'}>
                 Subscribe
               </Button>
