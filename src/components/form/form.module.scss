@@ -1,0 +1,169 @@
+.form {
+  margin-top: 40px;
+  max-width: 595px;
+  width: 100%;
+
+  text-align: right;
+
+  position: relative;
+
+  @media (max-width: 1200px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: 990px) {
+    padding: 0 20px;
+    max-width: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 80px;
+    bottom: -142px;
+    width: 240.788px;
+    height: 112.305px;
+    background: url('../../assets/letter.png') no-repeat center;
+
+    @media (max-width: 425px){
+      right: 160px;
+    }
+  }
+
+  &__item {
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+    }
+
+    label {
+      max-width: 280px;
+      width: 100%;
+
+      color: #8d8d8d;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+
+      margin-bottom: 45px;
+
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @media (max-width: 1200px) {
+        max-width: 240px;
+      }
+      @media (max-width: 990px) {
+        max-width: 420px;
+      }
+      @media (max-width: 425px) {
+        max-width: 100%;
+        margin-right: 0;
+      }
+
+      input {
+        border-bottom: 1px solid #8d8d8d;
+
+        width: 100%;
+        padding: 10px 5px;
+
+        color: #8d8d8d;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+
+        &:focus {
+          border-bottom: 1px solid #000;
+          color: #000;
+
+          &::placeholder {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  &__radios {
+    margin-bottom: 45px;
+    .form__item {
+      justify-content: flex-start;
+      flex-direction: row;
+
+      @media (max-width: 1200px) {
+        flex-wrap: wrap;
+      }
+    }
+
+    p {
+      text-align: left;
+
+      color: #000;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+
+      margin-bottom: 15px;
+    }
+  }
+
+  &__radio {
+    margin-right: 20px;
+
+    label {
+      display: flex;
+      align-items: center;
+
+      color: #000;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      margin-bottom: 0;
+    }
+
+    input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      + label {
+        &:before {
+          content: '';
+          background: #e0e0e0;
+          border-radius: 100%;
+          display: inline-block;
+          width: 13px;
+          height: 13px;
+          position: relative;
+          margin-right: 1em;
+          vertical-align: top;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+      &:checked {
+        + label {
+          &:before {
+            background-color: #000;
+            background: url('../../assets/done.svg') no-repeat center;
+          }
+        }
+      }
+    }
+  }
+}
